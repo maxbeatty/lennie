@@ -1,1 +1,26 @@
-["redis-brain.coffee", "tweet.coffee", "shipit.coffee"]
+[
+  "airbrake.coffee",
+  "aws.coffee",
+  "base64.coffee",
+  "bitcoin.coffee",
+  "directions.coffee",
+  "dribbble.coffee",
+  "github-status.coffee",
+  "grocery-list.coffee",
+  "hashing.coffee",
+  "heroku-status.coffee",
+  "isup.coffee",
+  "keep-alive.coffee",
+  "newrelic.coffee",
+  "rabbitmq.coffee",
+  "rdio.coffee",
+  "redis-brain.coffee",
+  "sprintly.coffee",
+  "spotify.coffee",
+  "shipit.coffee",
+  "uptime.coffee",
+  "xkcd.coffee",
+  "yelp.coffee",
+  "yoda-quotes.coffee",
+  "youtube-info.coffee"
+]
