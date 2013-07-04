@@ -5,7 +5,7 @@
   "keywords": [
     "github",
     "hubot",
-    "campfire",
+    "hipchat",
     "bot"
   ],
   "description": "A simple helpful robot for your Company",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "hubot": "2.5.5",
-    "hubot-scripts": "2.4.6",
+    "hubot-scripts": "2.4.8",
     "hubot-hipchat": "~2.5.1-4"
   },
   "engines": {
