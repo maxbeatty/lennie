@@ -1,5 +1,4 @@
 [
-  "airbrake.coffee",
   "aws.coffee",
   "base64.coffee",
   "bitcoin.coffee",
