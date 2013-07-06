@@ -8,7 +8,6 @@
   "hashing.coffee",
   "heroku-status.coffee",
   "isup.coffee",
-  "keep-alive.coffee",
   "mongolab-brain.coffee",
   "newrelic.coffee",
   "rabbitmq.coffee",
