@@ -8,7 +8,7 @@
   "hashing.coffee",
   "heroku-status.coffee",
   "isup.coffee",
-  "mongolab-brain.coffee",
+  "mongo-brain.coffee",
   "newrelic.coffee",
   "rabbitmq.coffee",
   "rdio.coffee",
