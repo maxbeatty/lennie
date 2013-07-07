@@ -11,6 +11,7 @@
   "mongo-brain.coffee",
   "rdio.coffee",
   "spotify.coffee",
+  "sprintly.coffee",
   "shipit.coffee",
   "uptime.coffee",
   "xkcd.coffee",
