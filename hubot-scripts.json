@@ -3,6 +3,7 @@
   "bitcoin.coffee",
   "directions.coffee",
   "dribbble.coffee",
+  "github-pulls.coffee",
   "github-status.coffee",
   "grocery-list.coffee",
   "hashing.coffee",
