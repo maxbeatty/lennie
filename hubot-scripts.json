@@ -9,6 +9,7 @@
   "hashing.coffee",
   "heroku-status.coffee",
   "isup.coffee",
+  "janky.coffee",
   "mongo-brain.coffee",
   "rdio.coffee",
   "spotify.coffee",
