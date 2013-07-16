@@ -10,6 +10,7 @@
   "heroku-status.coffee",
   "isup.coffee",
   "janky.coffee",
+  "keep-alive.coffee",
   "mongo-brain.coffee",
   "rdio.coffee",
   "spotify.coffee",
