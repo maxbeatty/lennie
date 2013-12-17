@@ -8,6 +8,7 @@
   "grocery-list.coffee",
   "hashing.coffee",
   "heroku-status.coffee",
+  "hipchat-api.coffee",
   "isup.coffee",
   "janky.coffee",
   "keep-alive.coffee",
