@@ -45,7 +45,6 @@ scienceGifs = [
   'http://media.giphy.com/media/vVnLG6de2ud4A/giphy.gif'
   'http://media.giphy.com/media/8db6nRqMsLCtq/giphy.gif'
   'http://media.giphy.com/media/I1HQNWXZfpZ7i/giphy.gif'
-  'https://i.chzbgr.com/maxW500/5847365888/hAD94EB05/'
 ]
 
 module.exports = (robot) ->
