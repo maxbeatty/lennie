@@ -81,3 +81,8 @@ module.exports = (robot) ->
 
   robot.hear /magic/i, (msg) ->
     msg.send msg.random magicGifs
+
+  robot.respond /did they find that plane yet/, (msg) ->
+    msg.send 'no.'
+
+
