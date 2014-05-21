@@ -47,6 +47,12 @@ scienceGifs = [
   'http://media.giphy.com/media/I1HQNWXZfpZ7i/giphy.gif'
 ]
 
+magicGifs = [
+  'http://24.media.tumblr.com/a619d38de635a0702c91f3be14c76c0d/tumblr_mouqvxFNHG1sncj0to1_400.gif'
+  'http://oi43.tinypic.com/20hsgpd.jpg'
+  'http://img4.wikia.nocookie.net/__cb20120812041416/thefanfictionwikiofgtfandphazon/images/6/69/Clapping_Magic_.gif'
+]
+
 module.exports = (robot) ->
   robot.hear /hodor/i, (msg) ->
     msg.send 'hodor'
@@ -57,6 +63,5 @@ module.exports = (robot) ->
   robot.hear /shaq/i, (msg) ->
     msg.send 'http://i.imgur.com/q3e87zR.gif'
 
-
-
-
+  robot.hear /magic/i, (msg) ->
+    msg.send msg.random magicGifs
