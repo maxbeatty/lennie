@@ -47,6 +47,19 @@ scienceGifs = [
   'http://media.giphy.com/media/I1HQNWXZfpZ7i/giphy.gif'
 ]
 
+nailedItGifs = [
+  'http://i.minus.com/ibwcbATIPAHBFq.gif'
+  'http://i.imgur.com/3LQ7eOn.gif'
+  'http://www.reactiongifs.com/wp-content/uploads/2013/11/1318.gif'
+  'http://www.reactiongifs.com/wp-content/uploads/2013/09/nailed-it.gif'
+  'http://www.reactiongifs.com/wp-content/uploads/2013/04/yeah-nailed-it1.gif'
+  'http://media.giphy.com/media/yTNXfyMid9v56/giphy.gif'
+  'http://media.giphy.com/media/8VrtCswiLDNnO/giphy.gif'
+  'http://media.giphy.com/media/T2EX8GTX0g4kU/giphy.gif'
+  'http://media.giphy.com/media/10HgpkH8nyOv1m/giphy.gif'
+  'http://media.giphy.com/media/urFfOfVApEJnG/giphy.gif'
+]
+
 module.exports = (robot) ->
   robot.hear /hodor/i, (msg) ->
     msg.send 'hodor'
@@ -56,6 +69,11 @@ module.exports = (robot) ->
 
   robot.hear /shaq/i, (msg) ->
     msg.send 'http://i.imgur.com/q3e87zR.gif'
+
+  robot.hear /nailed\sit/i, (msg) ->
+    msg.send msg.random nailedItGifs
+
+
 
 
 
