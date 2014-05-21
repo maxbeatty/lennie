@@ -58,6 +58,7 @@ nailedItGifs = [
   'http://media.giphy.com/media/T2EX8GTX0g4kU/giphy.gif'
   'http://media.giphy.com/media/10HgpkH8nyOv1m/giphy.gif'
   'http://media.giphy.com/media/urFfOfVApEJnG/giphy.gif'
+]
 
 magicGifs = [
   'http://24.media.tumblr.com/a619d38de635a0702c91f3be14c76c0d/tumblr_mouqvxFNHG1sncj0to1_400.gif'
