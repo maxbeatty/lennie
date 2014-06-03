@@ -83,6 +83,5 @@ module.exports = (robot) ->
   robot.hear /magic/i, (msg) ->
     msg.send msg.random magicGifs
 
-
-
-
+  robot.hear /business/i, (msg) ->
+    msg.send 'http://www.evilmilk.com/pictures/Haha_Business.jpg'
