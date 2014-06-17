@@ -58,6 +58,7 @@ nailedItGifs = [
   'http://media.giphy.com/media/T2EX8GTX0g4kU/giphy.gif'
   'http://media.giphy.com/media/10HgpkH8nyOv1m/giphy.gif'
   'http://media.giphy.com/media/urFfOfVApEJnG/giphy.gif'
+  'http://i.imgur.com/O2PZvBZ.gif'
 ]
 
 magicGifs = [
@@ -79,10 +80,8 @@ module.exports = (robot) ->
   robot.hear /nailed\sit/i, (msg) ->
     msg.send msg.random nailedItGifs
 
-  robot.hear /magic/i, (msg) ->
+  robot.hear /magic /i, (msg) ->
     msg.send msg.random magicGifs
 
-  robot.respond /did they find that plane yet/, (msg) ->
-    msg.send 'no.'
-
-
+  robot.hear /business/i, (msg) ->
+    msg.send 'http://www.evilmilk.com/pictures/Haha_Business.jpg'
