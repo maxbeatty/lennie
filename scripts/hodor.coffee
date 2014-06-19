@@ -80,7 +80,7 @@ module.exports = (robot) ->
   robot.hear /nailed\sit/i, (msg) ->
     msg.send msg.random nailedItGifs
 
-  robot.hear /magic /i, (msg) ->
+  robot.hear /magic(?!bus)/i, (msg) ->
     msg.send msg.random magicGifs
 
   robot.hear /business/i, (msg) ->
