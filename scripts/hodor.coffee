@@ -85,3 +85,6 @@ module.exports = (robot) ->
 
   robot.hear /business/i, (msg) ->
     msg.send 'http://www.evilmilk.com/pictures/Haha_Business.jpg'
+
+  robot.hear /booty/i, (msg) ->
+    msg.send 'http://i.imgur.com/ecywERW.gif'
