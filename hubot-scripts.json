@@ -1,7 +1,7 @@
 [
   "base64.coffee",
   "bitcoin.coffee",
-  "bitly",
+  "bitly.coffee",
   "corgime.coffee",
   "directions.coffee",
   "dribbble.coffee",
