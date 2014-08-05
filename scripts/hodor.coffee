@@ -68,8 +68,8 @@ magicGifs = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /hodor/i, (msg) ->
-    msg.send 'hodor'
+  # robot.hear /hodor/i, (msg) ->
+  #   msg.send 'hodor'
 
   robot.hear /science/i, (msg) ->
     msg.send msg.random scienceGifs
@@ -88,6 +88,6 @@ module.exports = (robot) ->
 
   robot.hear /booty/i, (msg) ->
     msg.send 'http://i.imgur.com/ecywERW.gif'
-    
+
   robot.hear /mallocator/i, (msg) ->
     msg.send 'https://www.dropbox.com/s/gtew5itehui9yya/a898m.jpg'
