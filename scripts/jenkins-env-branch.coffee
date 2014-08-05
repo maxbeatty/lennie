@@ -1,5 +1,5 @@
 # Description:
-#   Tell what branch is on the playground environment
+#   Tell what branches are on the environment
 #
 # Dependencies:
 #  xml2json
@@ -9,8 +9,8 @@
 #
 #
 # Commands:
-#   hubot what's on playground - Displays which branch is configured to be deployed to playground for each job
-#   hubot what's on playground for <repo> - Displays which branch is configured to be deployed to playground for <repo>
+#   hubot what's on <env> - Displays which branch is configured to be deployed to playground for each job
+#   hubot what's on <env> (for <repo>) - Displays which branch is configured to be deployed to playground for <repo>
 #
 # Notes:
 #   HUBOT_JENKINS_URL should have any auth inline (e.g. https://user:pass@your.jenkins.url)
@@ -73,10 +73,11 @@ getJobConfig = (job, cb) ->
         cb res + e.message
 
 module.exports = (robot) ->
-  robot.respond /what\'?s\s+on\s+playground(\s+for\s+)?(.*)?/i, (msg) ->
-    summary = 'Here are the branches currently on playground:'
+  robot.respond /what\'?s\s+on\s+(.+)(\s+for\s+)?(.*)?/i, (msg) ->
+    summary = "Here are the branches currently on #{msg.match[1]}: "
 
-    if msg.match[2]
+    # TODO: name other jobs like their environment
+    if msg.match[2] and msg.match[1] is 'playground'
       # check for specific repo
       name = msg.match[2] + '-playground'
       job =
@@ -90,7 +91,7 @@ module.exports = (robot) ->
 
     else
       # check all repos
-      get '/view/playground/api/json', {}, (err, statusCode, body) ->
+      get "/view/#{msg.match[1]}/api/json", {}, (err, statusCode, body) ->
         if err
           msg.send 'Jenkins says: ' + err
         else
