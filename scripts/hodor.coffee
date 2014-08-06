@@ -47,6 +47,15 @@ scienceGifs = [
   'http://media.giphy.com/media/I1HQNWXZfpZ7i/giphy.gif'
 ]
 
+batmanGifs  = [
+  'https://i.imgur.com/66FU6XQ.gif'
+  'https://i.imgur.com/rOFd9N5.png'
+  'https://i.imgur.com/l7cf8JK.png'
+  'https://i.chzbgr.com/maxW500/8258604800/h00E1B133/'
+  'https://i.imgur.com/yfqiOMj.jpg'
+  'https://i.imgur.com/bms8YSE.gif'
+]
+
 nailedItGifs = [
   'http://i.minus.com/ibwcbATIPAHBFq.gif'
   'http://i.imgur.com/3LQ7eOn.gif'
@@ -91,3 +100,6 @@ module.exports = (robot) ->
 
   robot.hear /mallocator/i, (msg) ->
     msg.send 'https://www.dropbox.com/s/gtew5itehui9yya/a898m.jpg'
+
+  robot.hear /batman/i, (msg) ->
+    msg.send msg.random batmanGifs
