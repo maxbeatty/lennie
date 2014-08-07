@@ -1,4 +1,5 @@
 [
+  "ackbar.coffee",
   "base64.coffee",
   "bitcoin.coffee",
   "bitly.coffee",
