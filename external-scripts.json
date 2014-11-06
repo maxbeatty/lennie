@@ -1,5 +1,9 @@
 [
   "hubot-sprintly-deploy-pull-request",
   "hubot-glossary",
-  "hubot-worldcup"
+  "hubot-worldcup",
+  "hubot-business-cat",
+  "hubot-thesimpsons",
+  "hubot-google-hangouts",
+  "hubot-http-status"
 ]
