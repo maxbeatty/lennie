@@ -73,13 +73,15 @@ getJobConfig = (job, cb) ->
         cb res + e.message
 
 module.exports = (robot) ->
-  robot.respond /what\'?s\s+on\s+(.+)(\s+for\s+)?(.*)?/i, (msg) ->
-    summary = "Here are the branches currently on #{msg.match[1]}: "
+  robot.respond /what\'?s\s+on\s+([^? ]+)(\s+for\s+)?([^?]+)?.*/i, (msg) ->
+    env = msg.match[1]
+    preposition = msg.match[2] or ''# msg.match[2] will be " for ", if anything
+    repo = msg.match[3] or ''
+    summary = "Here are the branches currently on #{env + preposition + repo}: "
 
-    # TODO: name other jobs like their environment
-    if msg.match[2] and msg.match[1] is 'playground'
+    if repo.length
       # check for specific repo
-      name = msg.match[2] + '-playground'
+      name = "#{repo}-#{env}"
       job =
         name: name
         url: "#{url.href}job/#{name}/"
@@ -91,7 +93,7 @@ module.exports = (robot) ->
 
     else
       # check all repos
-      get "/view/#{msg.match[1]}/api/json", {}, (err, statusCode, body) ->
+      get "/view/#{env}/api/json", {}, (err, statusCode, body) ->
         if err
           msg.send 'Jenkins says: ' + err
         else
