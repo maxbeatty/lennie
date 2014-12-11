@@ -20,20 +20,24 @@ proc = (evt) ->
       "$#{amt} CC payment received for #{evt.data.object.metadata.orderUid}"
     when 'ping'
       'friendly ping to see if webhook is working'
+    else
+      false
 
 module.exports = (robot) ->
   robot.router.post "/stripe", (req, res) ->
     robot.logger.debug req.body
 
-    # isocket Discussion
-    robot.messageRoom 2944, proc(req.body)
+    msg = proc req.body
+
+    robot.messageRoom '1822_isocket_discussion@conf.hipchat.com', msg if msg
 
     res.end 'OK'
 
   robot.router.post "/stripe-test", (req, res) ->
     robot.logger.debug req.body
 
-    # Engineering Only
-    robot.messageRoom 6394, 'TEST - ' + proc(req.body)
+    msg = proc req.body
+
+    robot.messageRoom '1822_dev_ops@conf.hipchat.com', 'TEST - ' + msg if msg
 
     res.end 'OK'
