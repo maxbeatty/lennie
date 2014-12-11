@@ -24,6 +24,7 @@
     "githubot": "0.4.0",
     "hubot": "2.5.5",
     "hubot-business-cat": "^1.1.5",
+    "hubot-domainr": "^1.0.2",
     "hubot-glossary": "0.0.0",
     "hubot-google-hangouts": "^0.7.0",
     "hubot-hipchat": "~2.5.1-4",
