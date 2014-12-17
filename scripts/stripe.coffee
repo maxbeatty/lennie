@@ -2,10 +2,10 @@
 #   Webhook for Stripe.com events
 #
 # Dependencies:
-#   None
+#   accounting
 #
 # Configuration:
-#   None
+#   Enable webhooks in Stripe dashboard
 #
 # Commands:
 #   None
@@ -13,11 +13,13 @@
 # Notes:
 #   None
 
+accounting = require 'accounting'
+
 proc = (evt) ->
   switch evt.type
     when 'charge.succeeded'
-      amt = parseFloat(evt.data.object.amount / 100).toFixed(2)
-      "$#{amt} CC payment received for #{evt.data.object.metadata.orderUid}"
+      amt = accounting.formatMoney evt.data.object.amount / 100
+      "#{amt} CC payment received for #{evt.data.object.metadata.orderUid}"
     when 'ping'
       'friendly ping to see if webhook is working'
     else
