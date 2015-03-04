@@ -4,15 +4,9 @@
 # Commands:
 #   hubot wordcloud user - display a wordcloud
 
-# fs = require 'fs'
-# phantom = require 'phantom-render-stream'
-
-# render = phantom()
-
 module.exports = (robot) ->
 	robot.hear /wordcloud ([\w]*)/i, (msg) ->
     user = msg.match[1].toLowerCase()
-    console.log user
     map = robot.brain.get(user) || {}
 
     sortable = []
