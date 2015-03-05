@@ -5,5 +5,7 @@
   "hubot-business-cat",
   "hubot-thesimpsons",
   "hubot-google-hangouts",
-  "hubot-http-status"
+  "hubot-http-status",
+  "hubot-uber",
+  "hubot-domainr"
 ]

@@ -111,6 +111,8 @@ module.exports = (robot) ->
 
   robot.hear /mallocator/i, (msg) ->
     msg.send 'https://www.dropbox.com/s/gtew5itehui9yya/a898m.jpg'
+    
+  robot.hear /starke/i, (msg) -> msg.send 'https://dl.dropboxusercontent.com/u/207793/hulloooooo.jpg'
 
   robot.respond /jif\s(?:me\s)?([a-z0-9]*)/i, (msg) ->
     name = msg.?match[1]
