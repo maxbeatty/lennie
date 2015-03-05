@@ -3,7 +3,7 @@
 #
 # Commands:
 #   hubot wordcloud user - display a wordcloud
-
+ 
 module.exports = (robot) ->
 	robot.hear /wordcloud ([\w]*)/i, (msg) ->
     user = msg.match[1].toLowerCase()
