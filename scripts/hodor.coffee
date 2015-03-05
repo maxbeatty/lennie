@@ -114,11 +114,3 @@ module.exports = (robot) ->
     
   robot.hear /starke/i, (msg) -> msg.send 'https://dl.dropboxusercontent.com/u/207793/hulloooooo.jpg'
 
-  robot.respond /jif(?:\sme)?\s*([a-z0-9]*)?/i, (msg) ->
-    name = msg.?match[1]
-    img = jifs[name]
-    if img
-      msg.send img
-    else
-      peeps = Object.keys(jifs)
-      msg.send jifs[peeps[Math.floor(Math.random() * peeps.length)]]
