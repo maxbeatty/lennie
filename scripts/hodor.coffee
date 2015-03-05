@@ -118,7 +118,7 @@ module.exports = (robot) ->
     name = msg.?match[1]
     img = jifs[name]
     if img
-      msg.reply img
+      msg.send img
     else
       peeps = Object.keys(jifs)
-      msg.reply jifs[peeps[Math.floor(Math.random() * peeps.length)]]
+      msg.send jifs[peeps[Math.floor(Math.random() * peeps.length)]]
