@@ -39,10 +39,10 @@ module.exports = (robot) ->
 
   robot.hear /wordcloud-debug ([\w]*)/i, (msg) ->
     user = msg.match[1].toLowerCase()
-    msg.send Util.inspect(robot.brain.get(prefix + user), false, 4) + ' ' + msg.message.user.name.replace(/\ /g, "+").toLowerCase() + ' ' + Util.inspect(msg.envelope, false, 4)
+    msg.send Util.inspect(robot.brain.get(prefix + user), false, 4) + ' ' + msg.envelope.user.mention_name.toLowerCase() + ' ' + Util.inspect(msg.envelope, false, 4)
 
   robot.hear /(.*)/i, (msg) ->
-    user = msg.message.user.name.replace(/\ /g, "+").toLowerCase()
+    user = msg.envelope.user.mention_name.toLowerCase()
 
     message = msg.match[0]
     if message?
