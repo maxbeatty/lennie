@@ -42,7 +42,8 @@ module.exports = (robot) ->
     msg.send Util.inspect(robot.brain.get(prefix + user), false, 4)
 
   robot.hear /(.*)/i, (msg) ->
-    user = msg.envelope.user.name.toLowerCase()
+    user = msg.message.user.name.replace(/\ /g, "+").toLowerCase()
+    
     message = msg.match[0]
     if message?
       words = message.replace(/[^\w\s]/gi, ' ').split(' ')
