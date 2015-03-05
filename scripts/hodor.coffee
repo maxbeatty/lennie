@@ -88,6 +88,9 @@ jifs =
   renee: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACZCh6bm1xCE-DRtAPA9vQra/Renee.gif?dl=0&m=1"
   sloan: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AADDi8CCfiRrETgBCAk2ojJHa/Sloan.gif?dl=0&m=1"
   stevenson: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAfh5XIvzx9Gvf6HyLYRYCba/Stevenson.gif?dl=0&m=1"
+  edison: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAD4mZaWgb5lXbkOzic0hiVya/Edison.gif?dl=0&m=1"
+  stacey: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAtipVCdb-Jb3sioLFsLOQXa/stacey.gif?dl=0&m=1"
+  joe: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABnELAmbI2y09blFdkRt5via/joe.gif?dl=0&m=1"
 
 module.exports = (robot) ->
 
