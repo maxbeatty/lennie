@@ -3,11 +3,15 @@
 #
 # Commands:
 #   hubot wordcloud user - display a wordcloud
- 
+
+Util = require "util"
+
+prefix = 'wordcloud_'
+
 module.exports = (robot) ->
 	robot.hear /wordcloud ([\w]*)/i, (msg) ->
     user = msg.match[1].toLowerCase()
-    map = robot.brain.get(user) || {}
+    map = robot.brain.get(prefix + user) || {}
 
     sortable = []
     for k,v of map
@@ -33,16 +37,20 @@ module.exports = (robot) ->
         response = JSON.parse body
         msg.send if response.status_code is 200 then response.data.url else response.status_txt
 
+  robot.hear /wordcloud-debug ([\w]*)/i, (msg) ->
+    user = msg.match[1].toLowerCase()
+    msg.send Util.inspect(robot.brain.get(prefix + user), false, 4)
+
   robot.hear /(.*)/i, (msg) ->
     user = msg.envelope.user.name.toLowerCase()
     message = msg.match[0]
     if message?
       words = message.replace(/[^\w\s]/gi, ' ').split(' ')
-      map = robot.brain.get(user) || {}
+      map = robot.brain.get(prefix + user) || {}
       for w in words
         map[w] ?= 0
         map[w] += 1
 
-      robot.brain.set user, map
+      robot.brain.set prefix + user, map
 
 
