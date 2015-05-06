@@ -67,6 +67,31 @@ magicGifs = [
   'http://img4.wikia.nocookie.net/__cb20120812041416/thefanfictionwikiofgtfandphazon/images/6/69/Clapping_Magic_.gif'
 ]
 
+jifs =
+  akshay: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAD-2RjQVqYhJuQyInU8eZO8a/Akshay.gif?dl=0&m=1"
+  alexa: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACg980fUh9QuK-0AFhNBfJla/Alexa.gif?dl=0&m=1"
+  b2: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABnjZcUOZtZWZYug1EiaM_Za/B2.gif?dl=0&m=1"
+  baclig: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AADCgfoj0s4Dnv_C7ieNAxNSa/Baclig.gif?dl=0&m=1"
+  barry: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAA-bizkCRsOqBQJalqTjvy4a/Barry.gif?dl=0&m=1"
+  casey: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABL1hiKqFCme0lzK-CgCYCXa/Casey.gif?dl=0&m=1"
+  chandra: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACpjY-e-K12UVXy2dJl4MXZa/Chandra.gif?dl=0&m=1"
+  dakim: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAGiqbfQkhzmfZbIMSBaQGda/Dakim.gif?dl=0&m=1"
+  gunn: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABUJzWRRmSdxP6d8_un561sa/Gunn.gif?dl=0&m=1"
+  hulk: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAA0D8HdKWsRSekwH1cI6877a/Hulk.gif?dl=0&m=1"
+  joel: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAJzvhu4GdmTos1_R773x8wa/Joel.gif?dl=0&m=1"
+  mai: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACzOBsRinRi8rsNLl_4H_usa/Mai.gif?dl=0&m=1"
+  max: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAABgly_zX-0s9R9esmtZ9AMa/Max.gif?dl=0&m=1"
+  mega: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACunqRNOh4_EwpKpdFKl1Bca/Mega.gif?dl=0&m=1"
+  michael: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAA2-7kCS2j2K9zTl2dktGZ-a/Michael.gif?dl=0&m=1"
+  nhan: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAzM5o78wTiBb6-v1O5lu97a/Nahn.gif?dl=0&m=1"
+  oleg: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABF7fA6d0SIJiP3mQByyfqia/Oleg.gif?dl=0&m=1"
+  renee: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACZCh6bm1xCE-DRtAPA9vQra/Renee.gif?dl=0&m=1"
+  sloan: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AADDi8CCfiRrETgBCAk2ojJHa/Sloan.gif?dl=0&m=1"
+  stevenson: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAfh5XIvzx9Gvf6HyLYRYCba/Stevenson.gif?dl=0&m=1"
+  edison: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAD4mZaWgb5lXbkOzic0hiVya/Edison.gif?dl=0&m=1"
+  stacey: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAtipVCdb-Jb3sioLFsLOQXa/stacey.gif?dl=0&m=1"
+  joe: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABnELAmbI2y09blFdkRt5via/joe.gif?dl=0&m=1"
+
 module.exports = (robot) ->
 
   robot.hear /science/i, (msg) ->
@@ -90,5 +115,14 @@ module.exports = (robot) ->
   robot.hear /mallocator/i, (msg) ->
     msg.send 'https://www.dropbox.com/s/gtew5itehui9yya/a898m.jpg'
     
-  robot.hear /starke/i, (msg) -> msg.send 'https://dl.dropboxusercontent.com/u/207793/hulloooooo.jpg'
+  robot.hear /starke/i, (msg) ->
+     msg.send 'https://dl.dropboxusercontent.com/u/207793/hulloooooo.jpg'
 
+  robot.respond /jif(?:\sme)?\s*([a-z0-9]*)?/i, (msg) ->
+    name = msg.match[1]
+    img = jifs[name]
+    if img
+      msg.send img
+    else
+      peeps = Object.keys(jifs)
+      msg.send jifs[peeps[Math.floor(Math.random() * peeps.length)]]

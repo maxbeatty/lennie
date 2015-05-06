@@ -20,27 +20,27 @@
     "url": "https://github.com/isocket/lennie.git"
   },
   "dependencies": {
-    "accounting": "^0.4.1",
-    "cheerio": "~0.12.0",
+    "accounting": "0.4.1",
+    "cheerio": "0.12.0",
     "githubot": "0.4.0",
     "hubot": "2.5.5",
-    "hubot-business-cat": "^1.1.5",
-    "hubot-domainr": "^1.0.2",
+    "hubot-business-cat": "1.1.5",
+    "hubot-domainr": "1.0.2",
     "hubot-glossary": "0.0.0",
-    "hubot-google-hangouts": "^0.7.0",
-    "hubot-hipchat": "~2.5.1-4",
-    "hubot-http-status": "^0.2.0",
+    "hubot-google-hangouts": "0.7.0",
+    "hubot-hipchat": "2.5.1-4",
+    "hubot-http-status": "0.2.0",
     "hubot-scripts": "2.5.15",
     "hubot-sprintly-deploy-pull-request": "0.0.2",
-    "hubot-thesimpsons": "^1.1.2",
+    "hubot-thesimpsons": "1.1.2",
     "hubot-uber": "1.0.1",
-    "hubot-worldcup": "^0.2.1",
-    "mongodb": "~1.3.11",
-    "xml2json": "~0.4.0",
-    "yelp": "~0.1.1"
+    "hubot-worldcup": "0.2.1",
+    "mongodb": "1.3.11",
+    "xml2json": "0.4.0",
+    "yelp": "0.1.1"
   },
   "engines": {
-    "node": ">= 0.8.x",
+    "node": "0.8.26",
     "npm": ">= 1.1.x"
   }
 }
