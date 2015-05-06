@@ -14,7 +14,6 @@
   "heroku-status.coffee",
   "hipchat-api.coffee",
   "isup.coffee",
-  "janky.coffee",
   "keep-alive.coffee",
   "mongo-brain.coffee",
   "rdio.coffee",
