@@ -55,7 +55,7 @@ getWeather = (query, cb) ->
       cb body
 
 module.exports = (robot) ->
-  robot.respond /what\'s\s+the\s+weather\s+like/i, (msg) ->
+  robot.respond /what[\'\’]s\s+the\s+weather\s+like/i, (msg) ->
     getWeather msg.random(citiesInWhichIsocketHasNoEmployees), (response) ->
       weather = JSON.parse response
 

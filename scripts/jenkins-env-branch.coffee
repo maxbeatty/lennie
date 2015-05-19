@@ -73,7 +73,7 @@ getJobConfig = (job, cb) ->
         cb res + e.message
 
 module.exports = (robot) ->
-  robot.respond /what\'?s\s+on\s+([^? ]+)(\s+for\s+)?([^?]+)?.*/i, (msg) ->
+  robot.respond /what[\'\’]?s\s+on\s+([^? ]+)(\s+for\s+)?([^?]+)?.*/i, (msg) ->
     env = msg.match[1]
     preposition = msg.match[2] or ''# msg.match[2] will be " for ", if anything
     repo = msg.match[3] or ''
