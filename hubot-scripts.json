@@ -12,7 +12,6 @@
   "grocery-list.coffee",
   "hashing.coffee",
   "heroku-status.coffee",
-  "hipchat-api.coffee",
   "isup.coffee",
   "keep-alive.coffee",
   "mongo-brain.coffee",

@@ -5,7 +5,6 @@
   "keywords": [
     "github",
     "hubot",
-    "hipchat",
     "bot"
   ],
   "description": "A simple helpful robot for isocket",
@@ -28,9 +27,9 @@
     "hubot-domainr": "1.0.2",
     "hubot-glossary": "0.0.0",
     "hubot-google-hangouts": "0.7.0",
-    "hubot-hipchat": "2.5.1-4",
     "hubot-http-status": "0.2.0",
     "hubot-scripts": "2.5.15",
+    "hubot-slack": "3.3.0",
     "hubot-sprintly-deploy-pull-request": "0.0.2",
     "hubot-thesimpsons": "1.1.2",
     "hubot-uber": "1.0.1",
