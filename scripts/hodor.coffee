@@ -22,13 +22,10 @@ scienceGifs = [
   'http://i2.kym-cdn.com/photos/images/original/000/544/282/f9b.png'
   'http://i0.kym-cdn.com/photos/images/original/000/658/359/54d.jpg'
   'http://24.media.tumblr.com/tumblr_m2y038gsvB1qjxjwto1_500.gif'
-  'http://i0.kym-cdn.com/photos/images/original/000/544/157/03e.jpg'
   'http://i3.kym-cdn.com/photos/images/original/000/544/415/e83.png'
   'http://31.media.tumblr.com/tumblr_m3nr1tCIJ61ruj0yho1_100.gif'
   'http://37.media.tumblr.com/tumblr_m3nqwqEnHa1ruj0yho1_100.gif'
-  'http://37.media.tumblr.com/tumblr_m3nqh2Xy3d1ruj0yho1_500.gif'
   'http://24.media.tumblr.com/tumblr_m3nq210MUy1ruj0yho1_400.gif'
-  'http://31.media.tumblr.com/tumblr_m356dxsa301ruj0yho1_400.gif'
   'http://24.media.tumblr.com/tumblr_lvpb2ty0z71qfr9vzo1_500.gif'
   'http://img.pandawhale.com/post-29085-Jesse-Pinkman-YEAH-SCIENCE-gif-2wAB.gif'
   'http://media.giphy.com/media/NR14ZNitY4MGk/giphy.gif'
@@ -36,14 +33,11 @@ scienceGifs = [
   'http://media2.giphy.com/media/ydMNTWYVjSEFi/giphy.gif'
   'http://media3.giphy.com/media/13Crr6gkUCCEWA/giphy.gif'
   'https://webfiles.uci.edu/tlentz/home/stand_back_square_0.png'
-  'http://media.giphy.com/media/6fJaFCfOWYIW4/giphy.gif'
-  'http://media.giphy.com/media/jHvnDjWx6bx6w/giphy.gif'
   'http://media.giphy.com/media/M7sBwHjMYhZra/giphy.gif'
   'http://media2.giphy.com/media/mv9sVnakzbtxS/giphy.gif'
   'http://media.giphy.com/media/o5FOLyP3sbWhO/giphy.gif'
   'http://media.giphy.com/media/12psn8ymXy3dYs/giphy.gif'
   'http://media.giphy.com/media/vVnLG6de2ud4A/giphy.gif'
-  'http://media.giphy.com/media/8db6nRqMsLCtq/giphy.gif'
   'http://media.giphy.com/media/I1HQNWXZfpZ7i/giphy.gif'
 ]
 
@@ -51,9 +45,7 @@ nailedItGifs = [
   'http://i.minus.com/ibwcbATIPAHBFq.gif'
   'http://i.imgur.com/3LQ7eOn.gif'
   'http://www.reactiongifs.com/wp-content/uploads/2013/11/1318.gif'
-  'http://www.reactiongifs.com/wp-content/uploads/2013/09/nailed-it.gif'
   'http://www.reactiongifs.com/wp-content/uploads/2013/04/yeah-nailed-it1.gif'
-  'http://media.giphy.com/media/yTNXfyMid9v56/giphy.gif'
   'http://media.giphy.com/media/8VrtCswiLDNnO/giphy.gif'
   'http://media.giphy.com/media/T2EX8GTX0g4kU/giphy.gif'
   'http://media.giphy.com/media/10HgpkH8nyOv1m/giphy.gif'
@@ -73,7 +65,6 @@ jifs =
   b2: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABnjZcUOZtZWZYug1EiaM_Za/B2.gif?dl=0&m=1"
   baclig: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AADCgfoj0s4Dnv_C7ieNAxNSa/Baclig.gif?dl=0&m=1"
   barry: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAA-bizkCRsOqBQJalqTjvy4a/Barry.gif?dl=0&m=1"
-  casey: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABL1hiKqFCme0lzK-CgCYCXa/Casey.gif?dl=0&m=1"
   chandra: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACpjY-e-K12UVXy2dJl4MXZa/Chandra.gif?dl=0&m=1"
   dakim: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAGiqbfQkhzmfZbIMSBaQGda/Dakim.gif?dl=0&m=1"
   gunn: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABUJzWRRmSdxP6d8_un561sa/Gunn.gif?dl=0&m=1"
@@ -81,11 +72,9 @@ jifs =
   joel: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAJzvhu4GdmTos1_R773x8wa/Joel.gif?dl=0&m=1"
   mai: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACzOBsRinRi8rsNLl_4H_usa/Mai.gif?dl=0&m=1"
   max: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAABgly_zX-0s9R9esmtZ9AMa/Max.gif?dl=0&m=1"
-  mega: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACunqRNOh4_EwpKpdFKl1Bca/Mega.gif?dl=0&m=1"
   michael: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAA2-7kCS2j2K9zTl2dktGZ-a/Michael.gif?dl=0&m=1"
   nhan: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAzM5o78wTiBb6-v1O5lu97a/Nahn.gif?dl=0&m=1"
   oleg: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABF7fA6d0SIJiP3mQByyfqia/Oleg.gif?dl=0&m=1"
-  renee: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AACZCh6bm1xCE-DRtAPA9vQra/Renee.gif?dl=0&m=1"
   sloan: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AADDi8CCfiRrETgBCAk2ojJHa/Sloan.gif?dl=0&m=1"
   stevenson: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAfh5XIvzx9Gvf6HyLYRYCba/Stevenson.gif?dl=0&m=1"
   edison: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAD4mZaWgb5lXbkOzic0hiVya/Edison.gif?dl=0&m=1"
