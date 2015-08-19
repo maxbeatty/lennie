@@ -1,11 +1,9 @@
 [
-  "hubot-sprintly-deploy-pull-request",
+  "hubot-bitly",
+  "hubot-domainr",
   "hubot-glossary",
-  "hubot-worldcup",
-  "hubot-business-cat",
-  "hubot-thesimpsons",
   "hubot-google-hangouts",
   "hubot-http-status",
-  "hubot-uber",
-  "hubot-domainr"
+  "hubot-sprintly-deploy-pull-request",
+  "hubot-uber"
 ]
