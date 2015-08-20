@@ -10,6 +10,8 @@
 # Commands:
 #   hubot what's the time - Displays the days until RSUs vest
 
+moment = require 'moment'
+
 # Build vest dates
 DAY = 15 # vesting always happens on the 15th of the month
 baseYear = 2016
