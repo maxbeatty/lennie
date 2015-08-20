@@ -1,7 +1,6 @@
 [
   "ackbar.coffee",
   "base64.coffee",
-  "bitcoin.coffee",
   "calm-down.coffee",
   "corgime.coffee",
   "directions.coffee",
