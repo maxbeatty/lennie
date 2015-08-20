@@ -2,16 +2,13 @@
 #   Tell us the days until RSUs vest
 #
 # Dependencies:
-#  cheerio
+#  n/a
 #
 # Configuration:
 #   n/a
 #
 # Commands:
-#   hubot what time is it - Displays the days until RSUs vest
-
-cheerio = require 'cheerio'
-
+#   hubot what's the time - Displays the days until RSUs vest
 
 # Build vest dates
 DAY = 15 # vesting always happens on the 15th of the month
@@ -35,6 +32,7 @@ for i in [0..(VEST_YEARS * VEST_TIMES)]
 #   '11/15/2016'
 #   '05/15/2017'
 #   '11/15/2017'
+# etc...
 # ]
 
 module.exports = (robot) ->
@@ -45,12 +43,5 @@ module.exports = (robot) ->
       if new Date(d) > today
         nextVest = d
         break
-    
-    msg
-      .http("https://daycalc.appspot.com/" + nextVest)
-      .get() (err, res, body) ->
-        return msg.send('Error: ' + err.message) if err
 
-        $ = cheerio.load body
-
-        msg.send "Only #{$('.du').text()} until your next wave of RSUs vest"
+    msg.send "Your next wave of RSUs vest #{moment(nextVest, "MM/DD/YYYY").fromNow()}"
