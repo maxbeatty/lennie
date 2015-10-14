@@ -2,6 +2,7 @@
   "ackbar.coffee",
   "base64.coffee",
   "calm-down.coffee",
+  "coin.coffee",
   "corgime.coffee",
   "directions.coffee",
   "github-pulls.coffee",
