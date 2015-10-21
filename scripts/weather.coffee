@@ -13,7 +13,6 @@
 #
 
 citiesInWhichIsocketHasNoEmployees = [
-  'london,uk'
   'cleveland'
   'utica'
   'pensacola'
@@ -43,9 +42,11 @@ citiesInWhichIsocketHasNoEmployees = [
 ]
 
 http = require 'http'
+apiPath = 'http://api.openweathermap.org/data/2.5/weather'
+apiKey = process.env.HUBOT_OPEN_WEATHER_API_KEY
 
 getWeather = (query, cb) ->
-  http.get "http://api.openweathermap.org/data/2.5/weather?q=#{query}", (res) ->
+  http.get "#{apiPath}?q=#{query}&APPID=#{apiKey}", (res) ->
     body = ''
 
     res.on "data", (chunk) ->
@@ -57,9 +58,12 @@ getWeather = (query, cb) ->
 module.exports = (robot) ->
   robot.respond /what[\'\’]s\s+the\s+weather\s+like/i, (msg) ->
     getWeather msg.random(citiesInWhichIsocketHasNoEmployees), (response) ->
-      weather = JSON.parse response
+      try {
+        weather = JSON.parse response
+        # convert kelvin to farenheit
+        temp = (((weather.main.temp - 273.15) * 1.8) + 32).toString().split('.')[0]
 
-      # convert kelvin to farenheit
-      temp = (((weather.main.temp - 273.15) * 1.8) + 32).toString().split('.')[0]
-
-      msg.send "It's about #{temp}ºF in #{weather.name}.  #{weather.weather[0].description}."
+        msg.send "It's about #{temp}ºF in #{weather.name}.  #{weather.weather[0].description}."
+      } catch {
+        msg.send "Look outside"
+      }
