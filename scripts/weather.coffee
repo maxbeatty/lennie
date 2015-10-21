@@ -57,6 +57,6 @@ module.exports = (robot) ->
         # convert kelvin to farenheit
         temp = (((weather.main.temp - 273.15) * 1.8) + 32).toString().split('.')[0]
 
-        msg.send "It's about #{temp}ºF in #{weather.name}.  #{weather.weather[0].description}."
-      catch
+        msg.send "It's about #{temp}ºF in #{weather.name}. #{weather.weather[0].description}."
+      catch err
         msg.send "Look outside"
