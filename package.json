@@ -14,6 +14,7 @@
       "url": "http://github.com/github/hubot/raw/master/LICENSE"
     }
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/isocket/lennie.git"
@@ -32,7 +33,7 @@
     "hubot-uber": "1.0.1",
     "moment": "^2.10.6",
     "mongodb": "1.4.39",
-    "xml2json": "0.4.0",
+    "xml2js": "0.4.15",
     "yelp": "0.1.1"
   },
   "engines": {

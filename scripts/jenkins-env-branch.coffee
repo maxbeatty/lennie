@@ -2,7 +2,7 @@
 #   Tell what branches are on the environment
 #
 # Dependencies:
-#  xml2json
+#  xml2js
 #
 # Configuration:
 #   HUBOT_JENKINS_URL
@@ -15,7 +15,7 @@
 # Notes:
 #   HUBOT_JENKINS_URL should have any auth inline (e.g. https://user:pass@your.jenkins.url)
 
-parser = require 'xml2json'
+xml2js = require 'xml2js'
 URL  = require 'url'
 url  = URL.parse process.env.HUBOT_JENKINS_URL
 HTTP = require url.protocol.replace(/:$/, '')
@@ -44,7 +44,6 @@ get = (path, params, cb) ->
       cb null, res.statusCode, body
 
   req.on "error", (e) ->
-    robot.emit 'error', e
     cb e, 500, "Client Error"
 
   req.end()
@@ -55,21 +54,19 @@ getJobConfig = (job, cb) ->
 
   get path, {}, (err, statusCode, body) ->
     if err
-      robot.emit 'error', err
       cb res + statusCode
     else
       try
-        json = parser.toJson body, { object: true }
+        parser = new xml2js.Parser()
+        parser.parseString body, (err, json) ->
+          branch = switch
+            when json.project then json.project.scm[0].branches[0]['hudson.plugins.git.BranchSpec'][0].name[0]
+            when json['maven2-moduleset'] then json['maven2-moduleset'].scm[0].branches[0]['hudson.plugins.git.BranchSpec'][0].name[0]
+            else '(unknown project type)'
 
-        branch = switch
-          when json.project then json.project.scm.branches['hudson.plugins.git.BranchSpec'].name
-          when json['maven2-moduleset'] then json['maven2-moduleset'].scm.branches['hudson.plugins.git.BranchSpec'].name
-          else '(unknown project type)'
-
-        cb res + branch
+          cb res + branch
 
       catch e
-        robot.emit 'error', e
         cb res + e.message
 
 module.exports = (robot) ->
