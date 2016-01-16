@@ -3,6 +3,7 @@ const Lab = require('lab')
 const Helper = require('hubot-test-helper')
 const nock = require('nock')
 const path = require('path')
+const testHelper = require('../_helper')
 
 const lab = exports.lab = Lab.script()
 const expect = Code.expect
@@ -36,26 +37,24 @@ lab.experiment('jenkins-playground script', () => {
   lab.test('error getting config', (done) => {
     scope.get('/job/repo-playground/config.xml').replyWithError('testing')
 
-    room.user.say('alice', 'hubot put feature on playground for repo').then(() => {
-      setTimeout(() => {
-        expect(room.messages).to.have.length(2)
-        expect(room.messages[1][1]).to.startWith('[jenkins][repo] error getting config')
+    testHelper.waitForReply(room, 'hubot put feature on playground for repo', scope)
+    .then(() => {
+      expect(room.messages[1][1]).to.startWith('[jenkins][repo] error getting config')
 
-        done()
-      }, 10)
+      done()
     })
+    .catch(done)
   })
 
   lab.test('error getting branch name', (done) => {
     scope.get('/job/repo-playground/config.xml').reply(200, '')
 
-    room.user.say('bob', 'hubot put feature on playground for repo').then(() => {
-      setTimeout(() => {
-        expect(room.messages).to.have.length(2)
-        expect(room.messages[1][1]).to.startWith('[jenkins][repo] error getting branch name')
+    testHelper.waitForReply(room, 'hubot put feature on playground for repo', scope)
+    .then(() => {
+      expect(room.messages).to.have.length(2)
+      expect(room.messages[1][1]).to.startWith('[jenkins][repo] error getting branch name')
 
-        done()
-      }, 10)
+      done()
     })
   })
 
@@ -67,21 +66,13 @@ lab.experiment('jenkins-playground script', () => {
         return '*'
       }).post(url, '*').replyWithError('fooey')
 
-    room.user
-      .say('alice', 'hubot put alpha on playground for repo')
-      .then(() => new Promise((resolve, reject) => {
-        setInterval(() => {
-          if (scope.isDone() && room.messages.length > 1) {
-            resolve()
-          }
-        }, 10)
-      }))
-      .then(() => {
-        expect(room.messages[1][1]).to.startWith('[jenkins][repo] error posting new config')
+    testHelper.waitForReply(room, 'hubot put alpha on playground for repo', scope)
+    .then(() => {
+      expect(room.messages[1][1]).to.startWith('[jenkins][repo] error posting new config')
 
-        done()
-      })
-      .catch(done)
+      done()
+    })
+    .catch(done)
   })
 
   lab.test('error triggering new build', (done) => {
@@ -94,21 +85,13 @@ lab.experiment('jenkins-playground script', () => {
       }).post(url + 'config.xml', '*').reply(200)
       .post(url + 'build', '*').replyWithError(msg)
 
-    room.user
-      .say('bob', 'hubot put beta on playground for repo')
-      .then(() => new Promise((resolve, reject) => {
-        setInterval(() => {
-          if (scope.isDone() && room.messages.length > 1) {
-            resolve()
-          }
-        }, 10)
-      }))
-      .then(() => {
-        expect(room.messages[1][1]).to.equal('[jenkins][repo] error triggering new build: ' + msg)
+    testHelper.waitForReply(room, 'hubot put beta on playground for repo', scope)
+    .then(() => {
+      expect(room.messages[1][1]).to.equal('[jenkins][repo] error triggering new build: ' + msg)
 
-        done()
-      })
-      .catch(done)
+      done()
+    })
+    .catch(done)
   })
 
   lab.test('error unexpected response', (done) => {
@@ -120,21 +103,13 @@ lab.experiment('jenkins-playground script', () => {
       }).post(url + 'config.xml', '*').reply(200)
       .post(url + 'build', '*').reply(403)
 
-    room.user
-      .say('alice', 'hubot put gamma on playground for repo')
-      .then(() => new Promise((resolve, reject) => {
-        setInterval(() => {
-          if (scope.isDone() && room.messages.length > 1) {
-            resolve()
-          }
-        }, 10)
-      }))
-      .then(() => {
-        expect(room.messages[1][1]).to.equal('[jenkins][repo] error unexpected response: 403')
+    testHelper.waitForReply(room, 'hubot put gamma on playground for repo', scope)
+    .then(() => {
+      expect(room.messages[1][1]).to.equal('[jenkins][repo] error unexpected response: 403')
 
-        done()
-      })
-      .catch(done)
+      done()
+    })
+    .catch(done)
   })
 
   lab.test('updateConfig works', (done) => {
@@ -146,34 +121,25 @@ lab.experiment('jenkins-playground script', () => {
       }).post(url + 'config.xml', '*').reply(200)
       .post(url + 'build', '*').reply(201)
 
-    room.user
-      .say('alice', 'hubot put gamma on playground for repo')
-      .then(() => new Promise((resolve, reject) => {
-        setInterval(() => {
-          if (scope.isDone() && room.messages.length > 1) {
-            resolve()
-          }
-        }, 10)
-      }))
-      .then(() => {
-        expect(room.messages[1][1]).to.equal('[jenkins][repo] branch configured and queued to build!')
+    testHelper.waitForReply(room, 'hubot put gamma on playground for repo', scope)
+    .then(() => {
+      expect(room.messages[1][1]).to.equal('[jenkins][repo] branch configured and queued to build!')
 
-        done()
-      })
-      .catch(done)
+      done()
+    })
+    .catch(done)
   })
 
   lab.test('clean up error', (done) => {
     const msg = 'watermelon'
     scope.get('/api/json').replyWithError(msg)
 
-    room.user.say('bob', 'hubot clean up playground').then(() => {
-      setTimeout(() => {
-        expect(room.messages).to.have.length(2)
-        expect(room.messages[1][1]).to.equal('Error getting jobs: ' + msg)
+    testHelper.waitForReply(room, 'hubot clean up playground', scope)
+    .then(() => {
+      expect(room.messages).to.have.length(2)
+      expect(room.messages[1][1]).to.equal('Error getting jobs: ' + msg)
 
-        done()
-      }, 10)
+      done()
     })
   })
 
@@ -192,22 +158,14 @@ lab.experiment('jenkins-playground script', () => {
         ]
       }))
 
-    room.user
-      .say('bob', 'hubot clean up playground')
-      .then(() => new Promise((resolve, reject) => {
-        setInterval(() => {
-          if (scope.isDone() && room.messages.length === 4) {
-            resolve()
-          }
-        }, 10)
-      }))
-      .then(() => {
-        expect(room.messages[1][1]).to.startWith('[jenkins][repo-a-playground]')
-        expect(room.messages[2][1]).to.startWith('[jenkins][repo-b-playground]')
-        expect(room.messages[3][1]).to.contain('All done!')
+    testHelper.waitForReply(room, 'hubot clean up playground', scope)
+    .then(() => {
+      expect(room.messages[1][1]).to.startWith('[jenkins][repo-a-playground]')
+      expect(room.messages[2][1]).to.startWith('[jenkins][repo-b-playground]')
+      expect(room.messages[3][1]).to.contain('All done!')
 
-        done()
-      })
-      .catch(done)
+      done()
+    })
+    .catch(done)
   })
 })
