@@ -15,11 +15,11 @@
 #
 # Notes:
 #   HUBOT_JENKINS_URL should have any auth inline (e.g. https://user:pass@your.jenkins.url)
-URL  = require 'url'
-jenkinsUrl  = URL.parse process.env.HUBOT_JENKINS_URL
-JENKINS_IS_STUPID = ''
+JenkinsUtil = require '../lib/util/jenkins'
 
 module.exports = (robot) ->
+  jenkins = new JenkinsUtil robot
+
   robot.respond /turn (off|on) deploys( for (.+))?.*$/i, (msg) ->
     cmd = if msg.match[1] is 'off' then 'disable' else 'enable'
     job = msg.match[3]
@@ -28,34 +28,27 @@ module.exports = (robot) ->
 
     toggle = (url) ->
       ++requestsRemaining
-      robot.http(url + cmd).auth(jenkinsUrl.auth).post(JENKINS_IS_STUPID) (err, res, body) ->
+      jenkins.post url + cmd, (err, res, body) ->
         if err
-          robot.logger.error '[jenkins][deploy]' + err.message
-          msg.send 'Jenkins says: ' + err
+          msg.send "Error trying to #{cmd}: #{err.message}"
         else
-          robot.logger.info '[jenkins][deploy]' + 'Response code: ' + res.statusCode
-          robot.logger.info '[jenkins][deploy]' + 'Body: ' + body
+          robot.logger.info '[jenkins][deploy] Response code: ' + res.statusCode
           # 302 Found means it worked
           ++turnedOff if res.statusCode is 302
 
-          msg.send "Turned #{msg.match[1]} #{turnedOff} deploy jobs" unless --requestsRemaining
+          unless --requestsRemaining
+            msg.send "Turned #{msg.match[1]} #{turnedOff} deploy jobs"
 
     if job
       # turning off individual job
-      robot.logger.info '[jenkins][deploy]' + "trying to #{cmd} #{job}"
-      toggle process.env.HUBOT_JENKINS_URL + 'job/' + job.trim() + '-deploy/'
+      robot.logger.info "[jenkins][deploy] trying to #{cmd} #{job}"
+      toggle "job/#{job.trim()}-deploy/"
     else
-      # get jobs
-      robot.http(process.env.HUBOT_JENKINS_URL + 'api/json')
-        .auth(jenkinsUrl.auth)
-        .header('Accept', 'application/json')
-        .get() (err, res, body) ->
-          if err
-            msg.send 'Jenkins says: ' + err
-          else
-            content = JSON.parse body
-
-            # turn them off one by one
-            for job in content.jobs when /-deploy$/.test job.name
-              robot.logger.info '[jenkins][deploy]' + "trying to #{cmd} #{job.name}"
-              toggle job.url
+      jenkins.getJobsMatching /-deploy$/, (err, jobs) ->
+        if err
+          msg.send "Error getting jobs: #{err.message}"
+        else
+          # turn them off one by one
+          for job in jobs
+            robot.logger.info "[jenkins][deploy] trying to #{cmd} #{job.name}"
+            toggle job.url

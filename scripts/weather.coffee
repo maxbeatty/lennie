@@ -55,8 +55,10 @@ module.exports = (robot) ->
       try
         weather = JSON.parse body
         # convert kelvin to farenheit
+        # coffeelint: disable=max_line_length
         temp = (((weather.main.temp - 273.15) * 1.8) + 32).toString().split('.')[0]
 
         msg.send "It's about #{temp}ºF in #{weather.name}. #{weather.weather[0].description}."
+        # coffeelint: enable=max_line_length
       catch err
         msg.send "Look outside"

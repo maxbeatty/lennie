@@ -13,88 +13,59 @@
 #
 # Notes:
 #   HUBOT_JENKINS_URL should have any auth inline (e.g. https://user:pass@your.jenkins.url)
-URL  = require 'url'
-jenkinsUrl  = URL.parse process.env.HUBOT_JENKINS_URL
-xml2js = require 'xml2js'
-JENKINS_IS_STUPID = ''
+JenkinsUtil = require '../lib/util/jenkins'
 
 module.exports = (robot) ->
-  updateConfig = (url, branch, send) ->
-    [repo, env] = URL.parse(url).path.split('/')[2].split('-')
-    prefix = "[jenkins][#{env}][#{repo}]"
+  jenkins = new JenkinsUtil robot
+
+  updateConfig = (url, name, branch, send) ->
+    prefix = "[jenkins][#{name}]"
     log = (msg) -> robot.logger.info "#{prefix} #{msg}"
     cb = (msg) -> send "#{prefix} #{msg}"
 
     log 'getting config.xml'
-    robot.http(url + 'config.xml').auth(jenkinsUrl.auth).get() (err, res, body) ->
+    jenkins.get url + 'config.xml', (err, res, body) ->
       if err
-        cb 'Jenkins says: ' + err
+        cb "error getting config: #{err.message}"
       else
-        try
-          parser = new xml2js.Parser()
-          parser.parseString body, (err, json) ->
-            if err
-              robot.logger.error err
-            else
-              switch
-                when json.project
-                  j = json.project.scm[0].branches[0]['hudson.plugins.git.BranchSpec'][0]
-                when json['maven2-moduleset']
-                  j = json['maven2-moduleset'].scm[0].branches[0]['hudson.plugins.git.BranchSpec'][0]
-                else
-                  return cb 'Um. Not sure how to update the branch for this repository.'
+        jenkins.setBranchNameInConfig body, branch, (err, xml) ->
+          if err
+            cb "error getting branch name: #{err.message}"
+          else
+            log 'putting modified config.xml back'
 
-              if j.name[0] is branch
-                return cb branch + ' is already configured'
+            jenkins.post url + 'config.xml', xml, (err, res, body) ->
+              if err
+                cb 'error posting new config: ' + err.message
               else
-                j.name = [branch]
-
-              builder = new xml2js.Builder()
-              xml = builder.buildObject json
-
-              log 'putting modified config.xml back'
-
-              robot.http(url + 'config.xml')
-                .auth(jenkinsUrl.auth)
-                .header('Content-Type', 'text/xml')
-                .post(xml) (err, res, body) ->
+                log 'queuing build'
+                jenkins.post url + 'build', (err, res, body) ->
                   if err
-                    cb 'Error posting new config: ' + err.message
+                    cb 'error triggering new build: ' + err.message
                   else
-                    log 'queuing build'
-                    robot.http(url + 'build').auth(jenkinsUrl.auth).post(JENKINS_IS_STUPID) (err, res, body) ->
-                      if err
-                        cb 'Error triggering new build: ' + err.message
-                      else
-                        if res.statusCode is 201
-                          cb 'Branch configured and queued to build!'
-                        else
-                          cb 'Got unexpected response status code: ' + res.statusCode
-        catch e
-          return cb 'Error when trying to update the config: ' + e.message
+                    if res.statusCode is 201
+                      cb 'branch configured and queued to build!'
+                    else
+                      cb 'error unexpected response: ' + res.statusCode
 
   robot.respond /clean up (playground[\d]?).*$/i, (msg) ->
-    robot.http(process.env.HUBOT_JENKINS_URL + 'api/json')
-      .auth(jenkinsUrl.auth)
-      .header('Accept', 'application/json')
-      .get() (err, res, body) ->
-        if err
-          msg.send 'Jenkins says: ' + err
-        else
-          content = JSON.parse body
-          reqsTodo = 0
-          re = new RegExp "-#{msg.match[1].trim()}$"
+    env = msg.match[1].trim()
+    jenkins.getJobsMatching new RegExp("-#{env}$"), (err, jobs) ->
+      if err
+        msg.send "Error getting jobs: #{err.message}"
+      else
+        reqsTodo = 0
 
-          for job in content.jobs when re.test job.name
-            ++reqsTodo
-            updateConfig job.url, 'master', (r) ->
-              msg.send r
-              msg.send 'All done!' unless --reqsTodo
+        for job in jobs
+          ++reqsTodo
+          updateConfig job.url, job.name, 'master', (r) ->
+            msg.send r
+            msg.send 'All done!' unless --reqsTodo
 
   robot.respond /put (.+) on (playground[\d]?) for (.+).*$/i, (msg) ->
     branch = msg.match[1]
     env = msg.match[2]
     repo = msg.match[3].trim()
-    url = "#{process.env.HUBOT_JENKINS_URL}job/#{repo}-#{env}/"
+    url = "job/#{repo}-#{env}/"
 
-    updateConfig url, branch, msg.send.bind(msg)
+    updateConfig url, repo, branch, msg.send.bind(msg)

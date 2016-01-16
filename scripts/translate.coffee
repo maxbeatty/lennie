@@ -71,9 +71,9 @@ languages =
   "cy": "Welsh",
   "yi": "Yiddish"
 
-getCode = (language,languages) ->
+getCode = (language, languages) ->
   for code, lang of languages
-      return code if lang.toLowerCase() is language.toLowerCase()
+    return code if lang.toLowerCase() is language.toLowerCase()
 
 module.exports = (robot) ->
   language_choices = (language for _, language of languages).sort().join('|')
@@ -82,10 +82,10 @@ module.exports = (robot) ->
                        "(?: (?:in)?to (#{language_choices}))?" +
                        '(.*)', 'i')
   robot.respond pattern, (msg) ->
-    term   = "\"#{msg.match[3]}\""
-    origin = if msg.match[1] isnt undefined then getCode(msg.match[1], languages) else 'auto'
-    target = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'en'
-    
+    t = "\"#{msg.match[3]}\""
+    origin = if msg.match[1]? then getCode(msg.match[1], languages) else 'auto'
+    target = if msg.match[2]? then getCode(msg.match[2], languages) else 'en'
+
     msg.http("https://translate.google.com/translate_a/t")
       .query({
         client: 't'
@@ -97,18 +97,17 @@ module.exports = (robot) ->
         tl: target
         tsel: 0
         uptl: "en"
-        text: term
+        text: t
       })
       .header('User-Agent', 'Mozilla/5.0')
       .get() (err, res, body) ->
         data   = body
         if data.length > 4 and data[0] == '['
           parsed = eval(data)
-          language =languages[parsed[2]]
+          l =languages[parsed[2]]
           parsed = parsed[0] and parsed[0][0] and parsed[0][0][0]
           if parsed
             if msg.match[2] is undefined
-              msg.send "#{term} is #{language} for #{parsed}"
+              msg.send "#{t} is #{l} for #{parsed}"
             else
-              msg.send "The #{language} #{term} translates as #{parsed} in #{languages[target]}"
-
+              msg.send "The #{l} #{t} translates as #{parsed} in #{l[target]}"

@@ -46,4 +46,6 @@ module.exports = (robot) ->
         nextVest = d
         break
 
-    msg.send "Your next wave of RSUs vest #{moment(nextVest, "MM/DD/YYYY").fromNow()}"
+    future = moment(nextVest, "MM/DD/YYYY").fromNow()
+
+    msg.send "Your next wave of RSUs vest #{future}"
