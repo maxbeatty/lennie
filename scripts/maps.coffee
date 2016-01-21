@@ -15,12 +15,11 @@ module.exports = (robot) ->
                 mapType +
                 "&sensor=false" +
                 "&format=png" # So campfire knows it's an image
-    url      = "http://maps.google.com/maps?q=" +
-               escape(location) +
-              "&hl=en&sll=37.0625,-95.677068&sspn=73.579623,100.371094&vpsrc=0&hnear=" +
-              escape(location) +
-              "&t=m&z=11"
+    url = "http://maps.google.com/maps?q=" +
+      escape(location) +
+      "&hl=en&sll=37.0625,-95.677068&sspn=73.579623,100.371094&vpsrc=0&hnear=" +
+      escape(location) +
+      "&t=m&z=11"
 
     msg.send mapUrl
     msg.send url
-

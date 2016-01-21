@@ -31,11 +31,13 @@ module.exports = (robot) ->
     res.end "Server time is: #{new Date()}"
 
   robot.router.get "/hubot/info", (req, res) ->
+    # coffeelint: disable=max_line_length
     child = spawn('/bin/sh', ['-c', "echo I\\'m $LOGNAME@$(hostname):$(pwd) \\($(git rev-parse HEAD)\\)"])
 
     child.stdout.on 'data', (data) ->
       res.end "#{data.toString().trim()} running node #{process.version} [pid: #{process.pid}]"
       child.stdin.end()
+    # coffeelint: enable=max_line_length
 
   robot.router.get "/hubot/ip", (req, res) ->
     robot.http('http://ifconfig.me/ip').get() (err, r, body) ->

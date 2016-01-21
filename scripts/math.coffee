@@ -4,6 +4,8 @@
 # Commands:
 #   hubot math me <expression> - Calculate the given expression.
 #   hubot convert me <expression> to <units> - Convert expression to given units.
+UA = "Mozilla/5.0 (X11; Linux x86_64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+
 module.exports = (robot) ->
   robot.respond /(calc|calculate|convert|math|maths)( me)? (.*)/i, (msg) ->
     msg
@@ -14,9 +16,8 @@ module.exports = (robot) ->
       .headers
         'Accept-Language': 'en-us,en;q=0.5',
         'Accept-Charset': 'utf-8',
-        'User-Agent': "Mozilla/5.0 (X11; Linux x86_64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+        'User-Agent': UA
       .get() (err, res, body) ->
         # Response includes non-string keys, so we can't use JSON.parse here.
         json = eval("(#{body})")
         msg.send json.rhs || 'Could not compute.'
-

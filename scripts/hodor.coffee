@@ -13,6 +13,7 @@
 # Author:
 #   brianstarke
 
+# coffeelint: disable=max_line_length
 scienceGifs = [
   'http://media.giphy.com/media/awuA6yBdZdOpy/giphy.gif'
   'http://i.imgur.com/eXX4SyK.gif'
@@ -80,6 +81,7 @@ jifs =
   edison: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAD4mZaWgb5lXbkOzic0hiVya/Edison.gif?dl=0&m=1"
   stacey: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AAAtipVCdb-Jb3sioLFsLOQXa/stacey.gif?dl=0&m=1"
   joe: "https://www.dropbox.com/sh/lt3n8xvg4m0ixwp/AABnELAmbI2y09blFdkRt5via/joe.gif?dl=0&m=1"
+# coffeelint: enable=max_line_length
 
 module.exports = (robot) ->
 

@@ -1,4 +1,4 @@
-# Lennie
+# Lennie [![Build Status](https://travis-ci.org/isocket/lennie.svg)](https://travis-ci.org/isocket/lennie) [![Code Climate](https://codeclimate.com/github/isocket/lennie/badges/gpa.svg)](https://codeclimate.com/github/isocket/lennie) [![Test Coverage](https://codeclimate.com/github/isocket/lennie/badges/coverage.svg)](https://codeclimate.com/github/isocket/lennie/coverage)
 
 This is a version of GitHub's hubot. He's pretty cool.
 
@@ -97,3 +97,6 @@ Lennie lives on Heroku and keeps itself alive (for the most part)
 You may want to get comfortable with `heroku logs` and `heroku restart`
 if you're having issues.
 
+## Test
+
+`npm test` will run unit tests, lint code, and measure test coverage.
