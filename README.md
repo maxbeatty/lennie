@@ -1,6 +1,8 @@
 # Lennie [![Build Status](https://travis-ci.org/isocket/lennie.svg)](https://travis-ci.org/isocket/lennie) [![Code Climate](https://codeclimate.com/github/isocket/lennie/badges/gpa.svg)](https://codeclimate.com/github/isocket/lennie) [![Test Coverage](https://codeclimate.com/github/isocket/lennie/badges/coverage.svg)](https://codeclimate.com/github/isocket/lennie/coverage)
 
-This is a version of GitHub's hubot. He's pretty cool.
+Lead Maintainer: [@maxbeatty](https://github.com/maxbeatty)
+
+This is a version of [GitHub's hubot](https://hubot.github.com/). He's pretty cool.
 
 This version is designed to be deployed on [Heroku][heroku].
 
