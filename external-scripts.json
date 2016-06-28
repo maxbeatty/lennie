@@ -6,5 +6,6 @@
   "hubot-google-hangouts",
   "hubot-http-status",
   "hubot-sprintly-deploy-pull-request",
+  "hubot-travisci-notifier",
   "hubot-uber"
 ]
