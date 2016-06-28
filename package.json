@@ -31,6 +31,7 @@
     "hubot-scripts": "2.5.15",
     "hubot-slack": "3.3.0",
     "hubot-sprintly-deploy-pull-request": "0.0.2",
+    "hubot-travisci-notifier": "1.0.1",
     "hubot-uber": "1.0.1",
     "moment": "^2.10.6",
     "mongodb": "1.4.39",
