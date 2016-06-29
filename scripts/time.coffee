@@ -2,7 +2,7 @@
 #   Tell us the days until RSUs vest
 #
 # Dependencies:
-#  n/a
+#  moment
 #
 # Configuration:
 #   n/a
